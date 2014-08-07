@@ -1,0 +1,22 @@
+{
+    "name"            : "performanceplatform-notifier",
+    "version"         : "0.0.1",
+    "description"     : "A tiny application utilised by the Performance Platform to send feedback emails",
+    "repository"      :
+    {
+        "type" : "git",
+        "url"  : "https://github.com/alphagov/performanceplatform-notifier"
+    },
+    "main"            : "",
+    "author"          : "Government Digital Service",
+    "devDependencies" :
+    {
+        "chai"  : "1.9.x",
+        "mocha" : "1.x.x"
+
+    },
+    "dependencies"    :
+    {
+        "colors" : "0.6.x"
+    }
+}
