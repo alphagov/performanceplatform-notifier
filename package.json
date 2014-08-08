@@ -1,20 +1,23 @@
 {
-    "name"            : "performanceplatform-notifier",
-    "version"         : "0.0.1",
-    "description"     : "A tiny application utilised by the Performance Platform to send feedback emails",
-    "repository"      :
-    {
-        "type" : "git",
-        "url"  : "https://github.com/alphagov/performanceplatform-notifier"
-    },
-    "main"            : "",
-    "author"          : "Government Digital Service",
-    "devDependencies" :
-    {
-        "chai"  : "1.9.x",
-        "mocha" : "1.x.x"
-
-    },
-    "dependencies"    :
-    {}
+  "name": "performanceplatform-notifier",
+  "version": "0.0.1",
+  "description": "A tiny application utilised by the Performance Platform to send feedback emails",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alphagov/performanceplatform-notifier"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha",
+    "lint": "[ -z \"$LINTFILES\" ] && LINTFILES=\"lib/ test/\"; ./node_modules/jshint/bin/jshint ${LINTFILES}; ./node_modules/jscs/bin/jscs ${LINTFILES};"
+  },
+  "main": "",
+  "author": "Government Digital Service",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "jscs": "1.5.9",
+    "jshint": "2.4.0",
+    "chai": "1.9.x",
+    "mocha": "1.x.x"
+  }
 }
