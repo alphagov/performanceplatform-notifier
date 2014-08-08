@@ -17,3 +17,11 @@ npm install
 ```
 npm test
 ```
+
+
+### Run Linting
+
+
+```
+npm run-script lint
+```
