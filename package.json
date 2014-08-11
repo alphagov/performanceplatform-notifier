@@ -7,8 +7,9 @@
     "url": "https://github.com/alphagov/performanceplatform-notifier"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha",
-    "lint": "[ -z \"$LINTFILES\" ] && LINTFILES=\"lib/ test/\"; ./node_modules/jshint/bin/jshint ${LINTFILES}; ./node_modules/jscs/bin/jscs ${LINTFILES};"
+    "unit": "./node_modules/mocha/bin/mocha",
+    "test": "npm run-script lint && npm run-script unit;",
+    "lint": "[ -z \"$LINTFILES\" ] && LINTFILES=\"lib/ test/\"; ./node_modules/jshint/bin/jshint ${LINTFILES} && ./node_modules/jscs/bin/jscs ${LINTFILES};"
   },
   "main": "",
   "author": "Government Digital Service",
