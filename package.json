@@ -13,12 +13,11 @@
   },
   "main": "",
   "author": "Government Digital Service",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "chai": "1.9.1",
     "jscs": "1.5.9",
-    "jshint": "2.4.0",
-    "chai": "1.9.x",
-    "mocha": "1.x.x"
+    "jshint": "2.5.3",
+    "mocha": "1.21.4"
   }
 }
