@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - '0.10'
+notifications:
+  email: false
+cache:
+  directories:
+    - node_modules
+branches:
+  only:
+    - master
+after_success:
+  - ./.travis_scripts/push_release_tag.sh
+env:
+  global:
+    # NOTE: contains GH_TOKEN=xxx from github user gds-pp-ci
+    secure: d1Tfvm/1yMjp7XEkQ2PcMQ6jA38tb8vUktuxLI8aiSkySLrCoM2atlgWEQYYXBmY266bZa6dsmuc7Twtl3n2ihmwYMDb66iQlB9aPrnmxp/ebOagoX8mQgciZ6crzwDUaCpHmyYkkHcCHTaqHWjGepuP/faawl4mC9JXGR6soYY=
