@@ -7,6 +7,7 @@
     "url": "https://github.com/alphagov/performanceplatform-notifier"
   },
   "scripts": {
+    "start": "node lib/index.js",
     "unit": "NODE_ENV=test ./node_modules/mocha/bin/mocha",
     "test": "npm run-script lint && npm run-script unit;",
     "lint": "[ -z \"$LINTFILES\" ] && LINTFILES=\"lib/ test/\"; ./node_modules/jshint/bin/jshint ${LINTFILES} && ./node_modules/jscs/bin/jscs ${LINTFILES};"
