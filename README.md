@@ -25,3 +25,11 @@ npm test
 ```
 npm run-script lint
 ```
+
+### Status
+
+[![Build Status](https://travis-ci.org/alphagov/performanceplatform-notifier.svg?branch=master)](https://travis-ci.org/alphagov/performanceplatform-notifier)
+
+![Latest tag](https://img.shields.io/github/tag/alphagov/performanceplatform-notifier.svg)
+
+[![Dependency status](https://gemnasium.com/alphagov/performanceplatform-notifier.svg)](https://gemnasium.com/alphagov/performanceplatform-notifier)
