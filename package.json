@@ -13,7 +13,9 @@
   },
   "main": "",
   "author": "Government Digital Service",
-  "dependencies": {},
+  "dependencies": {
+    "winston": "0.7.3"
+  },
   "devDependencies": {
     "chai": "1.9.1",
     "jscs": "1.5.9",
