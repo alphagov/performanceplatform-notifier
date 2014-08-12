@@ -1,3 +1,4 @@
 {
-  "logFilePath": "./log/app.log.json"
+  "logFilePath": "./log/app.log.json",
+  "exceptionLogFilePath": "./log/exceptions.log.json"
 }
