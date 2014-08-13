@@ -1,4 +1,9 @@
 {
+  "notificationsEmail": "notifications@performance.service.gov.uk",
   "logFilePath": "./log/app.log.json",
-  "exceptionLogFilePath": "./log/exceptions.log.json"
+  "exceptionLogFilePath": "./log/exceptions.log.json",
+  "amazonAWS": {
+    "accessKeyId": "",
+    "secretAccessKey": ""
+  }
 }

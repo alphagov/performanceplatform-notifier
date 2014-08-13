@@ -15,6 +15,8 @@
   "main": "",
   "author": "Government Digital Service",
   "dependencies": {
+    "nodemailer": "1.1.1",
+    "nodemailer-ses-transport": "1.1.0",
     "winston": "0.7.3"
   },
   "devDependencies": {
