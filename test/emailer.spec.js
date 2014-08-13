@@ -1,5 +1,5 @@
 var Emailer = require('../lib/emailer'),
-    config = require('../config.json');
+    config = require('../config');
 
 describe('Emailer', function () {
   var email,
