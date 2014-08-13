@@ -6,7 +6,8 @@
     "before"     : false,
     "beforeEach" : false,
     "after"      : false,
-    "afterEach"  : false
+    "afterEach"  : false,
+    "sinon"      : false
   },
 
   /* Enforcing options */
