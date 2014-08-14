@@ -19,7 +19,9 @@
     "nodemailer-ses-transport": "1.1.0",
     "winston": "0.7.3",
     "underscore": "1.6.0",
-    "request": "2.40.0"
+    "request": "2.40.0",
+    "q": "1.0.1",
+    "chai-as-promised": "4.1.1"
   },
   "devDependencies": {
     "chai": "1.9.1",

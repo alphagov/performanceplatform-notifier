@@ -1,4 +1,5 @@
-var Querist = require('../lib/querist');
+var Querist = require('../lib/querist'),
+  Q = require('Q');
 
 describe('Querist', function () {
 
@@ -18,13 +19,18 @@ describe('Querist', function () {
   });
 
   describe('query for data-set status', function () {
+
     it('should return a list of data-sets', function () {
+      this.timeout(100000);
 
       var client = new Querist();
       var response = client.get('_status/data-sets/');
 
-      response.should.be.an.instanceOf(Object);
-      response.data_sets.should.be.ok;
+      return Q.all([
+        response.should.eventually.be.an.instanceOf(Object),
+        response.should.eventually.have.property('data_sets').
+          and.be.instanceOf(Array)
+      ]);
 
     });
   });
