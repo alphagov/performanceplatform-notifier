@@ -20,14 +20,15 @@
     "winston": "0.7.3",
     "underscore": "1.6.0",
     "request": "2.40.0",
-    "q": "1.0.1",
-    "chai-as-promised": "4.1.1"
+    "q": "1.0.1"
   },
   "devDependencies": {
     "chai": "1.9.1",
+    "chai-as-promised": "4.1.1",
     "jscs": "1.5.9",
     "jshint": "2.5.3",
     "mocha": "1.21.4",
+    "require-subvert": "0.1.0",
     "sinon": "1.10.3",
     "sinon-chai": "2.5.0"
   }
