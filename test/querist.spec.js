@@ -32,18 +32,17 @@ describe('Querist', function () {
 
     it('should return a list of data-sets', function () {
       var client = new Querist();
-      var response = client.get('_status/data-sets/');
       var responseObj = {
         data_sets: [{},{}]
       };
 
       deferred.resolve(responseObj);
 
-      return Q.all([
-        response.should.eventually.be.an.instanceOf(Object),
-        response.should.eventually.have.property('data_sets').
-          and.be.instanceOf(Array)
-      ]);
+      return client.get('_status/data-sets/').then(function (response) {
+        response.should.be.an.instanceOf(Object);
+        response.should.have.property('data_sets').
+          and.be.instanceOf(Array);
+      });
 
     });
   });
