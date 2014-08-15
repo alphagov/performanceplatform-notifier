@@ -32,9 +32,13 @@ describe('Emailer', function () {
     });
   });
 
-  describe('.sendEmail()', function () {
+  describe('.send()', function () {
     it('should call sendMail on the transport with the correct args', function () {
-      email.sendEmail('test@test.com', 'subject', 'body');
+      email.send({
+        to: 'test@test.com',
+        subject: 'subject',
+        text: 'body'
+      });
 
       email.transporter.sendMail.should.have.been.calledWith({
         from: config.notificationsEmail,
