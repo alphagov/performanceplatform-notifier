@@ -16,7 +16,8 @@ describe('Request-Promise', function () {
 
     stub.should.not.have.been.called;
 
-    responsePromise.should.be.rejectedWith(Error, 'Please provide a base url and slug to query');
+    return responsePromise.
+      should.be.rejectedWith(Error, 'Please provide a base url and slug to query');
   });
 
   it('should make a request if base and url are provided', function () {
