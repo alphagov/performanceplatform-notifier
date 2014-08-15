@@ -1,5 +1,5 @@
 var requireSubvert = require('require-subvert')(__dirname),
-    Q = require('Q');
+    Q = require('q');
 
 describe('Querist', function () {
   var Querist,
