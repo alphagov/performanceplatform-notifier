@@ -47,6 +47,31 @@ describe('Querist', function () {
     });
   });
 
+  describe('query with options', function () {
+    it('should set json to true by default', function () {
+      var client = new Querist();
+      /* jshint unused: false */
+      client.get('test');
 
+      var options = stub.getCall(0).args[2];
+
+      options.should.eql({
+        json: true
+      });
+    });
+
+    it('should add options to the request', function () {
+      var client = new Querist();
+      /* jshint unused: false */
+      client.get('test', {json: false, foo: 'bar'});
+
+      var options = stub.getCall(0).args[2];
+
+      options.should.eql({
+        json: false,
+        foo: 'bar'
+      });
+    });
+  });
 
 });

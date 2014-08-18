@@ -46,7 +46,7 @@ describe('Request-Promise', function () {
   });
 
   it('should return json if everything went OK', function () {
-    var responsePromise = requestPromise('http://baseurl.com/', 'path');
+    var responsePromise = requestPromise('http://baseurl.com/', 'path', {json: true});
     var requestCallback = stub.getCall(0).args[1];
     var requestRes = { statusCode: 200 };
     var requestBody = { hello: 'world' };
@@ -57,5 +57,16 @@ describe('Request-Promise', function () {
       responsePromise.should.be.fulfilled,
       responsePromise.should.eventually.have.property('hello').to.equal('world')
     ]);
+  });
+
+  it('should extend options in the request', function () {
+    requestPromise('http://baseurl.com/', 'path', {foo: 'bar', json: true});
+    var requestOptions = stub.getCall(0).args[0];
+
+    requestOptions.should.eql({
+      foo: 'bar',
+      json: true,
+      url: 'http://baseurl.com/path'
+    });
   });
 });
