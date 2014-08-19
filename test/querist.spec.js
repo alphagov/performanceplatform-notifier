@@ -31,7 +31,9 @@ describe('Querist', function () {
   describe('query for data-set status', function () {
 
     it('should return a list of data-sets', function () {
-      var client = new Querist();
+      var client = new Querist({
+        baseUrl: 'https://www.performance.service.gov.uk/'
+      });
       var responseObj = {
         data_sets: [{},{}]
       };
@@ -50,10 +52,10 @@ describe('Querist', function () {
   describe('query with options', function () {
     it('should set json to true by default', function () {
       var client = new Querist();
-      /* jshint unused: false */
+
       client.get('test');
 
-      var options = stub.getCall(0).args[2];
+      var options = stub.getCall(0).args[1];
 
       options.should.eql({
         json: true
@@ -65,7 +67,7 @@ describe('Querist', function () {
       /* jshint unused: false */
       client.get('test', {json: false, foo: 'bar'});
 
-      var options = stub.getCall(0).args[2];
+      var options = stub.getCall(0).args[1];
 
       options.should.eql({
         json: false,

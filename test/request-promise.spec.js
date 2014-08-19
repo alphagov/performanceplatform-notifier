@@ -11,17 +11,17 @@ describe('Request-Promise', function () {
     requestPromise = requireSubvert.require('../lib/request-promise');
   });
 
-  it('should error if there’s no base or url provided', function () {
+  it('should error if there’s no url provided', function () {
     var responsePromise = requestPromise(undefined, undefined);
 
     stub.should.not.have.been.called;
 
     return responsePromise.
-      should.be.rejectedWith(Error, 'Please provide a base url and slug to query');
+      should.be.rejectedWith(Error, 'Please provide a url to query');
   });
 
-  it('should make a request if base and url are provided', function () {
-    requestPromise('http://baseurl.com/', 'path');
+  it('should make a request if a url is provided', function () {
+    requestPromise('http://baseurl.com/path');
 
     stub.should.have.been.called;
   });
@@ -46,7 +46,7 @@ describe('Request-Promise', function () {
   });
 
   it('should return json if everything went OK', function () {
-    var responsePromise = requestPromise('http://baseurl.com/', 'path', {json: true});
+    var responsePromise = requestPromise('http://baseurl.com/path', {json: true});
     var requestCallback = stub.getCall(0).args[1];
     var requestRes = { statusCode: 200 };
     var requestBody = { hello: 'world' };
@@ -60,7 +60,7 @@ describe('Request-Promise', function () {
   });
 
   it('should extend options in the request', function () {
-    requestPromise('http://baseurl.com/', 'path', {foo: 'bar', json: true});
+    requestPromise('http://baseurl.com/path', {foo: 'bar', json: true});
     var requestOptions = stub.getCall(0).args[0];
 
     requestOptions.should.eql({
