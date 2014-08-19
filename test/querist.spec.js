@@ -74,6 +74,28 @@ describe('Querist', function () {
         foo: 'bar'
       });
     });
+
+    it('should add a bearer token to the auth header', function () {
+      var client = new Querist(),
+        options = {
+          auth: {
+            bearer: 'cybersecurem8'
+          },
+          foo: 'bar'
+        };
+
+      client.get('test', options);
+
+      var calledOptions = stub.getCall(0).args[1];
+
+      calledOptions.should.eql({
+        json: true,
+        foo: 'bar',
+        auth: {
+          bearer: 'cybersecurem8'
+        }
+      });
+    });
   });
 
 });
