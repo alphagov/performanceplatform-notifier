@@ -31,7 +31,9 @@ describe('Querist', function () {
   describe('query for data-set status', function () {
 
     it('should return a list of data-sets', function () {
-      var client = new Querist();
+      var client = new Querist({
+        baseUrl: 'https://www.performance.service.gov.uk/'
+      });
       var responseObj = {
         data_sets: [{},{}]
       };
@@ -47,6 +49,53 @@ describe('Querist', function () {
     });
   });
 
+  describe('query with options', function () {
+    it('should set json to true by default', function () {
+      var client = new Querist();
 
+      client.get('test');
+
+      var options = stub.getCall(0).args[1];
+
+      options.should.eql({
+        json: true
+      });
+    });
+
+    it('should add options to the request', function () {
+      var client = new Querist();
+      /* jshint unused: false */
+      client.get('test', {json: false, foo: 'bar'});
+
+      var options = stub.getCall(0).args[1];
+
+      options.should.eql({
+        json: false,
+        foo: 'bar'
+      });
+    });
+
+    it('should add a bearer token to the auth header', function () {
+      var client = new Querist(),
+        options = {
+          auth: {
+            bearer: 'cybersecurem8'
+          },
+          foo: 'bar'
+        };
+
+      client.get('test', options);
+
+      var calledOptions = stub.getCall(0).args[1];
+
+      calledOptions.should.eql({
+        json: true,
+        foo: 'bar',
+        auth: {
+          bearer: 'cybersecurem8'
+        }
+      });
+    });
+  });
 
 });

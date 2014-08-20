@@ -5,5 +5,9 @@
   "amazonAWS": {
     "accessKeyId": "",
     "secretAccessKey": ""
+  },
+  "stagecraft": {
+    "bearer": "",
+    "baseUrl": "https://stagecraft.production.performance.service.gov.uk/"
   }
 }
