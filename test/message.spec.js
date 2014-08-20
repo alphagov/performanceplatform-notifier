@@ -2,7 +2,15 @@ var Message = require('../lib/message');
 
 describe('Message <Formats>', function () {
 
-  beforeEach(function () {});
+  beforeEach(function () {
+    this.clock = sinon.useFakeTimers(
+      new Date(2014, 7, 20).getTime()
+    );
+  });
+
+  afterEach(function () {
+    this.clock.restore();
+  });
 
   describe('config', function () {
     it('should accept options to extend original config', function () {
