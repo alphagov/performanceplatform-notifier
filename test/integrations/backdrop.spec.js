@@ -38,7 +38,7 @@ describe('Backdrop integration', function () {
 
       return backdrop.getDataSets()
         .then(function (response) {
-          console.log(response);
+
           response.should.be.an.instanceOf(Object);
           response.should.have.property('data_sets').
               and.be.instanceOf(Array);
@@ -65,7 +65,6 @@ describe('Backdrop integration', function () {
 
       return backdrop.getDataSets()
         .then(function (response) {
-          console.log(response);
           response.should.be.an.instanceOf(Object);
           response.should.have.property('data_sets').
               and.be.instanceOf(Array);
