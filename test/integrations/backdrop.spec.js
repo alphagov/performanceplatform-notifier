@@ -1,5 +1,5 @@
 var backdropResponse = require('../fixtures/backdrop-datasets.json'),
-  Q = require('Q');
+  Q = require('q');
 
 describe('Backdrop integration', function () {
   var deferred,

@@ -16,5 +16,5 @@ after_failure:
 env:
   global:
     # NOTE: contains GH_TOKEN=xxx from github user gds-pp-ci
-    - NODE_ENV='test'
+    - NODE_ENV='travis'
     - secure=d1Tfvm/1yMjp7XEkQ2PcMQ6jA38tb8vUktuxLI8aiSkySLrCoM2atlgWEQYYXBmY266bZa6dsmuc7Twtl3n2ihmwYMDb66iQlB9aPrnmxp/ebOagoX8mQgciZ6crzwDUaCpHmyYkkHcCHTaqHWjGepuP/faawl4mC9JXGR6soYY=
