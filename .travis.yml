@@ -11,6 +11,8 @@ branches:
     - master
 after_success:
   - ./.travis_scripts/push_release_tag.sh
+after_failure:
+  - "cat /home/travis/build/alphagov/performanceplatform-notifier/npm-debug.log"
 env:
   global:
     # NOTE: contains GH_TOKEN=xxx from github user gds-pp-ci
