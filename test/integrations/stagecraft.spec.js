@@ -1,15 +1,16 @@
-var backdropResponse = require('../fixtures/backdrop-datasets.json'),
-  Q = require('q');
+var stagecraftResponse = require('../fixtures/stagecraft-emails.json'),
+  Q = require('q'),
+  appConfig = require('../../config');
 
-describe('Backdrop integration', function () {
+describe('Stagecraft integration', function () {
   var deferred,
-    Backdrop,
+    Stagecraft,
     Query = require('../../lib/querist');
 
   beforeEach(function () {
     deferred = Q.defer();
     sinon.stub(Query.prototype, 'get').returns(deferred.promise);
-    Backdrop = require('../../lib/integrations/backdrop');
+    Stagecraft = require('../../lib/integrations/stagecraft');
   });
 
   afterEach(function () {
@@ -17,60 +18,73 @@ describe('Backdrop integration', function () {
   });
 
   it('should accept options', function () {
-    var backdrop = new Backdrop({
-      foo: 'bar'
+    var stagecraft = new Stagecraft({
+      auth: {
+        bearer: 'ralph_sucks'
+      }
     });
 
-    backdrop.config.should.eql({
-      baseUrl : 'https://www.performance.service.gov.uk',
-      foo: 'bar'
+    stagecraft.config.should.eql({
+      baseUrl : 'https://stagecraft.production.performance.service.gov.uk/',
+      auth: {
+        bearer: 'ralph_sucks'
+      }
     });
 
   });
 
-  describe('Querying for out of date datasets', function () {
+  describe('Querying for emails attached to datasets', function () {
 
-    it('Should respond correctly to datasets', function () {
+    it('responds with emails', function () {
+      var config = {
+        baseUrl : 'https://testurl.com/',
+        auth: {
+          bearer: 'bearerToken'
+        }
+      };
+      var stagecraft = new Stagecraft(config);
+      var dataSet = {
+        name: 'testSet'
+      };
 
-      var backdrop = new Backdrop();
+      deferred.resolve(stagecraftResponse);
 
-      deferred.resolve(backdropResponse);
-
-      return backdrop.getDataSets()
+      return stagecraft.queryEmail(dataSet)
         .then(function (response) {
-
+          Query.prototype.get.should.have.been.calledOnce;
+          Query.prototype.get.getCall(0).args[0].should.equal('data-sets/testSet/users');
+          Query.prototype.get.getCall(0).args[1].should.eql(config);
           response.should.be.an.instanceOf(Object);
-          response.should.have.property('data_sets').
-              and.be.instanceOf(Array);
-          response.should.have.property('data_sets').
-              length(4);
-          response.should.have.property('message').
-              equal('4 data-sets are out of date');
-          response.should.have.property('status').
-              equal('not okay');
+          response.emails.should.be.an.instanceOf(Array);
+          response.should.have.property('name');
+          response.name.should.equal('testSet');
+          response.emails[0].should.have.property('email');
         });
     });
 
-    it('Should respond correctly with no datasets', function () {
-
-      var backdrop = new Backdrop();
-
-      deferred.resolve(
-        {
-          'data_sets': [],
-          'message': 'all clear',
-          'status': 'okay'
+    it('responds with 0 emails', function () {
+      var config = {
+        baseUrl : 'https://testurl.com/',
+        auth: {
+          bearer: 'bearerToken'
         }
-      );
+      };
+      var stagecraft = new Stagecraft(config);
+      var dataSet = {
+        name: 'testSet'
+      };
 
-      return backdrop.getDataSets()
+      deferred.resolve([]);
+
+      return stagecraft.queryEmail(dataSet)
         .then(function (response) {
+          Query.prototype.get.should.have.been.calledOnce;
+          Query.prototype.get.getCall(0).args[0].should.equal('data-sets/testSet/users');
+          Query.prototype.get.getCall(0).args[1].should.eql(config);
           response.should.be.an.instanceOf(Object);
-          response.should.have.property('data_sets').
-              and.be.instanceOf(Array);
-          response.should.have.property('data_sets').
-              length(0);
-          response.should.have.property('status').equal('okay');
+          response.emails.should.equal(appConfig.notificationsEmail);
+          response.should.have.property('name');
+          response.name.should.equal('testSet');
         });
     });
 
