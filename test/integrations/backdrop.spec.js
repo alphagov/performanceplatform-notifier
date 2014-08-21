@@ -39,6 +39,10 @@ describe('Backdrop integration', function () {
       return backdrop.getDataSets()
         .then(function (response) {
 
+          Query.prototype.get.should.be.calledOnce;
+          Query.prototype.get.getCall(0).args[0]
+            .should.equal('/_status/data-sets/');
+
           response.should.be.an.instanceOf(Object);
           response.should.have.property('data_sets').
               and.be.instanceOf(Array);
