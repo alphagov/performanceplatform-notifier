@@ -58,7 +58,7 @@ describe('Stagecraft integration', function () {
           response.emails.should.be.an.instanceOf(Array);
           response.should.have.property('name');
           response.name.should.equal('testSet');
-          response.emails[0].should.have.property('email');
+          response.emails[0].should.equal('hi.pal@email.gsi.govemail');
         });
     });
 

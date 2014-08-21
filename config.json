@@ -7,7 +7,7 @@
     "secretAccessKey": ""
   },
   "stagecraft": {
-    "bearer": "b124884c2716359541f92c0104255dea19b23ddcc4d6feea2fbaeaa9aceaa02a",
+    "bearer": "",
     "baseUrl": "https://stagecraft.production.performance.service.gov.uk/"
   }
 }
