@@ -40,7 +40,7 @@ describe('Message <Formats>', function () {
 
       var message = new Message();
 
-      var reminder = message.datasetReminder(dataSet);
+      var reminder = message.dataSetReminder(dataSet);
 
       reminder.should.contain(
         'The data set deposit_foreign_marriage_journey was last updated on 16th Jan 14'
@@ -58,13 +58,13 @@ describe('Message <Formats>', function () {
 
       var message = new Message();
 
-      message.datasetReminder(dataSet, {
+      message.dataSetReminder(dataSet, {
         dateFormat: 'MMMM Do YYYY, h:mm:ss a'
       }).should.contain(
         'January 16th 2014, 4:33:04 pm'
       );
 
-      message.datasetReminder(dataSet, {
+      message.dataSetReminder(dataSet, {
         dateFormat: 'YYYY-MM-DD HH:mm'
       }).should.contain(
         '2014-01-16 16:33'
