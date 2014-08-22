@@ -16,7 +16,7 @@
   "author": "Government Digital Service",
   "dependencies": {
     "moment": "2.8.1",
-    "nodemailer": "1.1.1",
+    "nodemailer": "1.2.1",
     "nodemailer-ses-transport": "1.1.0",
     "nodemailer-stub-transport": "0.1.4",
     "q": "1.0.1",
