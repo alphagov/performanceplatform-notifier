@@ -22,7 +22,8 @@
     "q": "1.0.1",
     "request": "2.40.0",
     "underscore": "1.6.0",
-    "winston": "0.7.3"
+    "winston": "0.7.3",
+    "redis": "0.12.1"
   },
   "devDependencies": {
     "chai": "1.9.1",
@@ -32,6 +33,7 @@
     "mocha": "1.21.4",
     "require-subvert": "0.1.0",
     "sinon": "1.10.3",
-    "sinon-chai": "2.5.0"
+    "sinon-chai": "2.5.0",
+    "fakeredis": "0.2.0"
   }
 }
