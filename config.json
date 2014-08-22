@@ -10,5 +10,9 @@
     "bearer": "",
     "baseUrl": "https://stagecraft.production.performance.service.gov.uk/"
   },
-  "safeMode": true
+  "safeMode": true,
+  "redis": {
+    "port": 6379,
+    "host": "localhost"
+  }
 }
