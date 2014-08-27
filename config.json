@@ -10,5 +10,9 @@
     "bearer": "",
     "baseUrl": "https://stagecraft.production.performance.service.gov.uk/"
   },
-  "safeMode": true
+  "safeMode": true,
+  "backdrop": {
+    "bearer": "",
+    "baseUrl": "https://www.performance.service.gov.uk/"
+  }
 }
