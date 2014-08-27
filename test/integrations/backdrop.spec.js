@@ -125,7 +125,7 @@ describe('Backdrop integration', function () {
         data: []
       });
 
-      return backdrop.needsEmail('test_data_set').then(function (needsEmail) {
+      return backdrop.needsEmail({name: 'test_data_set'}).then(function (needsEmail) {
         Query.prototype.get.should.be.calledOnce;
         Query.prototype.get.getCall(0).args[0]
             .should.equal('data/performance-platform/notifier');
