@@ -36,7 +36,7 @@ describe('Backdrop integration', function () {
 
   });
 
-  describe('getDataSets', function () {
+  describe('getDataSets()', function () {
 
     it('Should respond correctly to datasets', function () {
 
@@ -51,15 +51,8 @@ describe('Backdrop integration', function () {
           Query.prototype.get.getCall(0).args[0]
             .should.equal('_status/data-sets/');
 
-          response.should.be.an.instanceOf(Object);
-          response.should.have.property('data_sets').
-              and.be.instanceOf(Array);
-          response.should.have.property('data_sets').
-              length(4);
-          response.should.have.property('message').
-              equal('4 data-sets are out of date');
-          response.should.have.property('status').
-              equal('not okay');
+          response.should.be.an.instanceOf(Array);
+          response.length.should.equal(4);
         });
     });
 
@@ -77,18 +70,13 @@ describe('Backdrop integration', function () {
 
       return backdrop.getDataSets()
         .then(function (response) {
-          response.should.be.an.instanceOf(Object);
-          response.should.have.property('data_sets').
-              and.be.instanceOf(Array);
-          response.should.have.property('data_sets').
-              length(0);
-          response.should.have.property('status').equal('okay');
+          response.should.equal(false);
         });
     });
 
   });
 
-  describe('emailSent', function () {
+  describe('emailSent()', function () {
     beforeEach(function () {
       this.clock = sinon.useFakeTimers(
         new Date(2014, 7, 20).getTime()
@@ -123,7 +111,7 @@ describe('Backdrop integration', function () {
     });
   });
 
-  describe('lastEmailSent', function () {
+  describe('needsEmail()', function () {
     beforeEach(function () {
       this.clock = sinon.useFakeTimers(
         new Date(2014, 7, 20).getTime()
@@ -133,9 +121,11 @@ describe('Backdrop integration', function () {
     it('should call client.get with the correct dataset (filter) and options', function () {
       var backdrop = new Backdrop();
 
-      deferred.resolve();
+      deferred.resolve({
+        data: []
+      });
 
-      return backdrop.lastEmailSent('test_data_set').then(function () {
+      return backdrop.needsEmail('test_data_set').then(function (needsEmail) {
         Query.prototype.get.should.be.calledOnce;
         Query.prototype.get.getCall(0).args[0]
             .should.equal('data/performance-platform/notifier');
@@ -147,6 +137,19 @@ describe('Backdrop integration', function () {
                 sort_by: '_timestamp:descending'
               }
             });
+        needsEmail.should.equal(true);
+      });
+    });
+
+    it('should return false if email has been sent in backdrop', function () {
+      var backdrop = new Backdrop();
+
+      deferred.resolve({
+        data: [{}]
+      });
+
+      return backdrop.needsEmail('test_data_set').then(function (needsEmail) {
+        needsEmail.should.equal(false);
       });
     });
   });
