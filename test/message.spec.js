@@ -3,6 +3,8 @@ var Message = require('../lib/message'),
 
 describe('Message <Formats>', function () {
 
+  var message;
+
   beforeEach(function () {
     this.clock = sinon.useFakeTimers(moment('2014-07-20T00:00:00Z').utc().unix() * 1000);
   });
@@ -20,7 +22,7 @@ describe('Message <Formats>', function () {
 
       message.config.should.be.an.instanceOf(Object);
       message.config.should.eql({
-        dateFormat: 'Do MMM YY',
+        dateFormat: 'DD MMMM YYYY',
         foo: 'bar'
       });
 
@@ -34,27 +36,24 @@ describe('Message <Formats>', function () {
       'max-age-expected': 90000
     };
 
-    it('Generate a message about how out of date a data-set is', function () {
+    beforeEach(function () {
+      message = new Message();
+    });
 
-      var message = new Message();
+    it('Generate a message about how out of date a data-set is', function () {
 
       var reminder = message.dataSetReminder(dataSet);
 
       reminder.should.contain(
-        'The data set deposit_foreign_marriage_journey was last updated on 18th Jul 14'
+        'The data set deposit_foreign_marriage_journey was last updated on 18 July 2014'
       );
       reminder.should.contain(
-          '1 days out of date.'
-      );
-      reminder.should.contain(
-          'Please upload the data at your earliest convenience.'
+        'a day'
       );
 
     });
 
     it('Returns a different date format when passed in', function () {
-
-      var message = new Message();
 
       message.dataSetReminder(dataSet, {
         dateFormat: 'MMMM Do YYYY, h:mm:ss a'
@@ -68,6 +67,12 @@ describe('Message <Formats>', function () {
         '2014-07-18 00:00'
       );
 
+    });
+
+    it('generates a title', function () {
+      var title = message.generateTitle(dataSet);
+
+      title.should.equal('NOTIFICATION: "deposit_foreign_marriage_journey" is OUT OF DATE.');
     });
 
   });
