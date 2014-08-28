@@ -1,11 +1,10 @@
-var Message = require('../lib/message');
+var Message = require('../lib/message'),
+  moment = require('moment');
 
 describe('Message <Formats>', function () {
 
   beforeEach(function () {
-    this.clock = sinon.useFakeTimers(
-      new Date(2014, 7, 20).getTime()
-    );
+    this.clock = sinon.useFakeTimers(moment('2014-07-20T00:00:00Z').utc().unix() * 1000);
   });
 
   afterEach(function () {
@@ -46,7 +45,7 @@ describe('Message <Formats>', function () {
         'The data set deposit_foreign_marriage_journey was last updated on 16th Jan 14'
       );
       reminder.should.contain(
-          '215 days out of date.'
+          '184 days out of date.'
       );
       reminder.should.contain(
           'Please upload the data at your earliest convenience.'
