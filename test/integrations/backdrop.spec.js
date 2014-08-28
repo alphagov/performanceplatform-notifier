@@ -1,5 +1,6 @@
 var backdropResponse = require('../fixtures/backdrop-datasets.json'),
-  Q = require('q');
+  Q = require('q'),
+  moment = require('moment');
 
 describe('Backdrop integration', function () {
   var deferred,
@@ -78,9 +79,7 @@ describe('Backdrop integration', function () {
 
   describe('emailSent()', function () {
     beforeEach(function () {
-      this.clock = sinon.useFakeTimers(
-        new Date(2014, 7, 20).getTime()
-      );
+      this.clock = sinon.useFakeTimers(moment('2014-07-20T00:00:00Z').utc().unix() * 1000);
     });
 
     it('should call the client.post endpoint with the dataset and a timestamp', function () {
@@ -103,7 +102,7 @@ describe('Backdrop integration', function () {
               },
               baseUrl: 'https://www.performance.service.gov.uk/',
               json: {
-                _timestamp: '2014-08-19T23:00:00+00:00',
+                _timestamp: '2014-07-20T00:00:00+00:00',
                 data_set: 'test_data_set'
               }
             });
