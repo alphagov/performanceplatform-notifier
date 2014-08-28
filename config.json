@@ -15,5 +15,6 @@
   "backdrop": {
     "bearer": "",
     "baseUrl": "https://www.performance.service.gov.uk/"
-  }
+  },
+  "adminAppUrl": "www.admin.service.performance.gov.uk"
 }
