@@ -52,7 +52,6 @@ describe('Querist', function () {
     describe('with options', function () {
       it('should add options to the request', function () {
         var client = new Querist();
-        /* jshint unused: false */
         client.get('test', {json: false, foo: 'bar'});
 
         var options = stub.getCall(0).args[1];
@@ -90,7 +89,6 @@ describe('Querist', function () {
     describe('with options', function () {
       it('should add options to the request with a POST method', function () {
         var client = new Querist();
-        /* jshint unused: false */
         client.post('test', {foo: 'bar'});
 
         var options = stub.getCall(0).args[1];
