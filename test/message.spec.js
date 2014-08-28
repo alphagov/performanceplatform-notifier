@@ -59,13 +59,13 @@ describe('Message <Formats>', function () {
       message.dataSetReminder(dataSet, {
         dateFormat: 'MMMM Do YYYY, h:mm:ss a'
       }).should.contain(
-        'July 18th 2014, 1:00:00 am'
+        'July 18th 2014, 12:00:00 am'
       );
 
       message.dataSetReminder(dataSet, {
         dateFormat: 'YYYY-MM-DD HH:mm'
       }).should.contain(
-        '2014-07-18 01:00'
+        '2014-07-18 00:00'
       );
 
     });
