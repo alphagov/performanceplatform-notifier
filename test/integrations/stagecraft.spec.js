@@ -54,11 +54,8 @@ describe('Stagecraft integration', function () {
           Query.prototype.get.should.have.been.calledOnce;
           Query.prototype.get.getCall(0).args[0].should.equal('data-sets/testSet/users');
           Query.prototype.get.getCall(0).args[1].should.eql(config);
-          response.should.be.an.instanceOf(Object);
-          response.emails.should.be.an.instanceOf(Array);
-          response.should.have.property('name');
-          response.name.should.equal('testSet');
-          response.emails[0].should.equal('hi.pal@email.gsi.govemail');
+          response.should.be.an.instanceOf(Array);
+          response[0].should.equal('hi.pal@email.gsi.govemail');
         });
     });
 
@@ -81,10 +78,7 @@ describe('Stagecraft integration', function () {
           Query.prototype.get.should.have.been.calledOnce;
           Query.prototype.get.getCall(0).args[0].should.equal('data-sets/testSet/users');
           Query.prototype.get.getCall(0).args[1].should.eql(config);
-          response.should.be.an.instanceOf(Object);
-          response.emails.should.equal(appConfig.notificationsEmail);
-          response.should.have.property('name');
-          response.name.should.equal('testSet');
+          response.should.equal(appConfig.notificationsEmail);
         });
     });
 
