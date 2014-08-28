@@ -78,7 +78,8 @@ describe('Stagecraft integration', function () {
           Query.prototype.get.should.have.been.calledOnce;
           Query.prototype.get.getCall(0).args[0].should.equal('data-sets/testSet/users');
           Query.prototype.get.getCall(0).args[1].should.eql(config);
-          response.should.equal(appConfig.notificationsEmail);
+          response.should.be.an.instanceOf(Array);
+          response[0].should.equal(appConfig.notificationsEmail);
         });
     });
 
