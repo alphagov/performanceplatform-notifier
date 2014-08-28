@@ -41,7 +41,7 @@ describe('Message <Formats>', function () {
       var reminder = message.dataSetReminder(dataSet);
 
       reminder.should.contain(
-        'The data set deposit_foreign_marriage_journey was last updated on 16th Jan 14'
+        'The data set deposit_foreign_marriage_journey was last updated on 18th Jul 14'
       );
       reminder.should.contain(
           '1 days out of date.'
@@ -59,13 +59,13 @@ describe('Message <Formats>', function () {
       message.dataSetReminder(dataSet, {
         dateFormat: 'MMMM Do YYYY, h:mm:ss a'
       }).should.contain(
-        'January 16th 2014, 4:33:04 pm'
+        'July 18th 2014, 12:00:00 am'
       );
 
       message.dataSetReminder(dataSet, {
         dateFormat: 'YYYY-MM-DD HH:mm'
       }).should.contain(
-        '2014-01-16 16:33'
+        '2014-07-18 00:00'
       );
 
     });
