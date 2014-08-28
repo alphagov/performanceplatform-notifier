@@ -91,7 +91,10 @@ describe('Backdrop integration', function () {
 
       deferred.resolve();
 
-      return backdrop.emailSent('test_data_set').then(function () {
+      return backdrop.emailSent({
+        name: 'test_data_set',
+        'seconds-out-of-date': 1001
+      }).then(function () {
         Query.prototype.post.should.be.calledOnce;
         Query.prototype.post.getCall(0).args[0]
             .should.equal('data/performance-platform/notifier');
@@ -103,7 +106,8 @@ describe('Backdrop integration', function () {
               baseUrl: 'https://www.performance.service.gov.uk/',
               json: {
                 _timestamp: '2014-07-20T00:00:00+00:00',
-                data_set: 'test_data_set'
+                data_set: 'test_data_set',
+                'seconds-out-of-date': 1001
               }
             });
       });
