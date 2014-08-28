@@ -30,9 +30,8 @@ describe('Message <Formats>', function () {
   describe('dataset emails', function () {
     var dataSet = {
       'name': 'deposit_foreign_marriage_journey',
-      'last-updated': '2014-01-16T16:33:04.455000+00:00',
-      'max-age-expected': 90000,
-      'seconds-out-of-date': 18484718
+      'last-updated': '2014-07-18T00:00:00Z',
+      'max-age-expected': 90000
     };
 
     it('Generate a message about how out of date a data-set is', function () {
@@ -45,7 +44,7 @@ describe('Message <Formats>', function () {
         'The data set deposit_foreign_marriage_journey was last updated on 16th Jan 14'
       );
       reminder.should.contain(
-          '184 days out of date.'
+          '1 days out of date.'
       );
       reminder.should.contain(
           'Please upload the data at your earliest convenience.'
