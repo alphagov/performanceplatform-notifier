@@ -112,9 +112,7 @@ describe('Backdrop integration', function () {
 
   describe('needsEmail()', function () {
     beforeEach(function () {
-      this.clock = sinon.useFakeTimers(
-        new Date(2014, 7, 20).getTime()
-      );
+      this.clock = sinon.useFakeTimers(moment('2014-07-20T00:00:00Z').utc().unix() * 1000);
     });
 
     it('should call client.get with the correct dataset (filter) and options', function () {
@@ -140,15 +138,33 @@ describe('Backdrop integration', function () {
       });
     });
 
-    it('should return false if email has been sent in backdrop', function () {
+    it('should return false if email has been sent and record for alert in backdrop', function () {
       var backdrop = new Backdrop();
 
       deferred.resolve({
         data: [{}]
       });
 
-      return backdrop.needsEmail('test_data_set').then(function (needsEmail) {
+      return backdrop.needsEmail({name: 'test_data_set'}).then(function (needsEmail) {
         needsEmail.should.equal(false);
+      });
+    });
+
+    it('should return true if email has been sent and record for ' +
+    'alert in backdrop is less than the frequency for alert', function () {
+      var backdrop = new Backdrop();
+
+      deferred.resolve({
+        data: [{
+          _timestamp: '2014-07-19T00:00:00Z'
+        }]
+      });
+
+      return backdrop.needsEmail({
+        name: 'test_data_set',
+        'max-age-expected': 360
+      }).then(function (needsEmail) {
+        needsEmail.should.equal(true);
       });
     });
   });
