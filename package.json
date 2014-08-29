@@ -15,20 +15,20 @@
   "main": "",
   "author": "Government Digital Service",
   "dependencies": {
-    "moment": "2.8.1",
+    "moment": "2.8.2",
     "nodemailer": "1.2.1",
     "nodemailer-ses-transport": "1.1.0",
     "nodemailer-stub-transport": "0.1.4",
     "q": "1.0.1",
     "request": "2.40.0",
-    "underscore": "1.6.0",
+    "underscore": "1.7.0",
     "winston": "0.7.3"
   },
   "devDependencies": {
     "chai": "1.9.1",
     "chai-as-promised": "4.1.1",
     "jscs": "1.5.9",
-    "jshint": "2.5.3",
+    "jshint": "2.5.5",
     "mocha": "1.21.4",
     "require-subvert": "0.1.0",
     "sinon": "1.10.3",
