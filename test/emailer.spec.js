@@ -47,6 +47,41 @@ describe('Emailer', function () {
         text: 'body'
       });
     });
+
+    it('should not send if the email address is in the blacklist', function () {
+      email.setBlacklist([
+        'blacklisted@internet.com'
+      ]);
+
+      email.send({
+        to: 'blacklisted@internet.com',
+        subject: 'foo',
+        text: 'bar'
+      });
+
+      email.send({
+        to: 'not-blacklisted@internet.com',
+        subject: 'foo',
+        text: 'bar'
+      });
+
+      email.transporter.sendMail.calledOnce.should.be.true;
+      email.transporter.sendMail.getCall(0).args[0].to.should.equal('not-blacklisted@internet.com');
+    });
+
+    it('should not care about case when blacklisting', function () {
+      email.setBlacklist([
+        'blacklisted@internet.com'
+      ]);
+
+      email.send({
+        to: 'blAcklisted@internet.com',
+        subject: 'foo',
+        text: 'bar'
+      });
+
+      email.transporter.sendMail.called.should.be.false;
+    });
   });
 
 });
