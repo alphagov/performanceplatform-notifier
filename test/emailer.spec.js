@@ -54,13 +54,7 @@ describe('Emailer', function () {
       ]);
 
       email.send({
-        to: 'blacklisted@internet.com',
-        subject: 'foo',
-        text: 'bar'
-      });
-
-      email.send({
-        to: 'not-blacklisted@internet.com',
+        to: 'blacklisted@internet.com, not-blacklisted@internet.com',
         subject: 'foo',
         text: 'bar'
       });
