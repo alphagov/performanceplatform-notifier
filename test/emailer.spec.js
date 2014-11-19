@@ -35,7 +35,7 @@ describe('Emailer', function () {
   describe('.send()', function () {
     it('should call sendMail on the transport with the correct args', function () {
       email.send({
-        to: 'test@test.com',
+        to: ['test@test.com'],
         subject: 'subject',
         text: 'body'
       });
@@ -46,6 +46,35 @@ describe('Emailer', function () {
         subject: 'subject',
         text: 'body'
       });
+    });
+
+    it('should not send if the email address is in the blacklist', function () {
+      email.setBlacklist([
+        'blacklisted@internet.com'
+      ]);
+
+      email.send({
+        to: ['blacklisted@internet.com', 'not-blacklisted@internet.com'],
+        subject: 'foo',
+        text: 'bar'
+      });
+
+      email.transporter.sendMail.calledOnce.should.be.true;
+      email.transporter.sendMail.getCall(0).args[0].to.should.equal('not-blacklisted@internet.com');
+    });
+
+    it('should not care about case when blacklisting', function () {
+      email.setBlacklist([
+        'blacklisted@internet.com'
+      ]);
+
+      email.send({
+        to: ['blAcklisted@internet.com'],
+        subject: 'foo',
+        text: 'bar'
+      });
+
+      email.transporter.sendMail.called.should.be.false;
     });
   });
 
