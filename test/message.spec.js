@@ -55,13 +55,13 @@ describe('Message <Formats>', function () {
 
     it('Returns a different date format when passed in', function () {
 
-      message.dataSetReminder(dataSet, {
+      message.dataSetReminder(dataSet, [], {
         dateFormat: 'MMMM Do YYYY, h:mm:ss a'
       }).should.contain(
         'July 18th 2014, 12:00:00 am'
       );
 
-      message.dataSetReminder(dataSet, {
+      message.dataSetReminder(dataSet, [], {
         dateFormat: 'YYYY-MM-DD HH:mm'
       }).should.contain(
         '2014-07-18 00:00'
@@ -70,7 +70,7 @@ describe('Message <Formats>', function () {
     });
 
     it('generates a title', function () {
-      var title = message.generateTitle(dataSet);
+      var title = message.dataSetReminderSubject(dataSet);
 
       title.should.equal('NOTIFICATION: "deposit_foreign_marriage_journey" is OUT OF DATE.');
     });

@@ -1,0 +1,33 @@
+
+
+===========================================================
+
+NOTIFICATION:
+{{#dashboards}}{{{title}}}
+{{/dashboards}}
+
+{{dataSet.name}} dataset is out of date.
+
+===========================================================
+
+
+The data set {{{dataSet.name}}} was last updated on {{{lastUpdated}}} and is now {{{outOfDate}}} out of date.
+
+Data set: {{{dataSet.name}}}
+Last updated: {{{lastUpdated}}}
+Period out of date: {{{outOfDate}}}
+
+===========================================================
+PLEASE UPLOAD THE DATA AT YOUR EARLIEST CONVENIENCE
+===========================================================
+
+Login to upload the data at:
+{{{adminAppUrl}}}
+===========================================================
+
+This is a notification email from the Performance Platform.
+
+You have received this email because you requested this notification to be sent to you.
+
+You can unsubscribe from alerts by sending an email to: {{{notificationsEmail}}}
+
