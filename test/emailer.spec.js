@@ -35,7 +35,7 @@ describe('Emailer', function () {
   describe('.send()', function () {
     it('should call sendMail on the transport with the correct args', function () {
       email.send({
-        to: 'test@test.com',
+        to: ['test@test.com'],
         subject: 'subject',
         text: 'body'
       });
@@ -54,7 +54,7 @@ describe('Emailer', function () {
       ]);
 
       email.send({
-        to: 'blacklisted@internet.com, not-blacklisted@internet.com',
+        to: ['blacklisted@internet.com', 'not-blacklisted@internet.com'],
         subject: 'foo',
         text: 'bar'
       });
@@ -69,7 +69,7 @@ describe('Emailer', function () {
       ]);
 
       email.send({
-        to: 'blAcklisted@internet.com',
+        to: ['blAcklisted@internet.com'],
         subject: 'foo',
         text: 'bar'
       });
