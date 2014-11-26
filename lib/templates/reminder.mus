@@ -1,5 +1,4 @@
 
-
 ===========================================================
 
 NOTIFICATION:
@@ -10,11 +9,10 @@ NOTIFICATION:
 
 ===========================================================
 
-
 The data set {{{dataSet.name}}} was last updated on {{{lastUpdated}}} and is now {{{outOfDate}}} out of date.
 
 Data set: {{{dataSet.name}}}
-Last updated: {{{lastUpdated}}}
+Most recent data point available: {{{lastUpdated}}}
 Period out of date: {{{outOfDate}}}
 
 ===========================================================
@@ -23,6 +21,7 @@ PLEASE UPLOAD THE DATA AT YOUR EARLIEST CONVENIENCE
 
 Login to upload the data at:
 {{{adminAppUrl}}}
+
 ===========================================================
 
 This is a notification email from the Performance Platform.
