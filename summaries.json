@@ -1,0 +1,8 @@
+[
+  {
+    "dashboard": "carers-allowance",
+    "recipients": [
+      "example.person@testing.gov.uk"
+    ]
+  }
+]
