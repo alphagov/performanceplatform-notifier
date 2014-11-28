@@ -8,7 +8,7 @@
   },
   "scripts": {
     "out-of-date": "node lib/index.js",
-    "summaries": "node lib/summaries.js",
+    "summaries": "node lib/send-summaries.js",
     "unit": "./node_modules/mocha/bin/mocha",
     "test": "npm run-script lint && npm run-script unit;",
     "lint": "[ -z \"$LINTFILES\" ] && LINTFILES=\"lib/ test/\"; ./node_modules/jshint/bin/jshint ${LINTFILES} && ./node_modules/jscs/bin/jscs ${LINTFILES};"
@@ -21,6 +21,7 @@
     "nodemailer": "1.2.1",
     "nodemailer-ses-transport": "1.1.0",
     "nodemailer-stub-transport": "0.1.4",
+    "performanceplatform-client.js": "0.0.1",
     "q": "1.0.1",
     "request": "2.40.0",
     "underscore": "1.7.0",
