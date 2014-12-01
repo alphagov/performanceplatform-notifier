@@ -46,7 +46,7 @@ describe('Summary emails', function () {
   it('should list out module updates', function () {
     this.firstDashboard.text.should.have.string('July 2013 to June 2014');
     this.firstDashboard.text.should.have.string('Apr 2013 to Mar 2014');
-    this.firstDashboard.text.should.have.string('Total change = -0.27% points');
+    this.firstDashboard.text.should.have.string('Total change = -0.27%');
   });
 
 });

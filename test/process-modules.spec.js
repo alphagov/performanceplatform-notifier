@@ -7,8 +7,8 @@ describe('Process summary modules', function () {
     this.processed = processModules(this.dashboardConfig.modules);
   });
 
-  it('returns an array of KPI modules', function () {
-    this.processed.length.should.equal(3);
+  it('returns an array of modules', function () {
+    this.processed.length.should.equal(4);
   });
 
   it('should return modules with title property', function () {
@@ -16,13 +16,21 @@ describe('Process summary modules', function () {
     module.title.should.equal('Transactions per year');
   });
 
-  it('should return modules with textUpdate property', function () {
+  it('should return a textUpdate for a KPI module', function () {
     var module = this.processed[0];
-    module.textUpdate.constructor.should.equal(Array);
     module.textUpdate.should.eql([
       'July 2013 to June 2014 = 45.8m',
       'Apr 2013 to Mar 2014 = 46m',
-      'Total change = -0.27% points'
+      'Total change = -0.27%'
+    ]);
+  });
+
+  it('should return a textUpdate for a single time series module', function () {
+    var module = this.processed[3];
+    module.textUpdate.should.eql([
+      '24 to 30 Nov 2014 = 37m 51s',
+      '17 to 23 Nov 2014 = 37m 56s',
+      'Total change = -5s'
     ]);
   });
 
