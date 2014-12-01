@@ -2,7 +2,14 @@
   {
     "dashboard": "carers-allowance",
     "recipients": [
-      "example.person@testing.gov.uk"
+      "example.person@testing.gov.uk",
+      "another.person@testing.gov.uk"
+    ]
+  },
+  {
+    "dashboard": "tax-disc",
+    "recipients": [
+      "tax.person@testing.gov.uk"
     ]
   }
 ]
