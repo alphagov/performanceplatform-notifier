@@ -1,13 +1,13 @@
 [
   {
-    "dashboard": "carers-allowance",
+    "dashboard": "tax-disc",
     "recipients": [
       "example.person@testing.gov.uk",
       "another.person@testing.gov.uk"
     ]
   },
   {
-    "dashboard": "tax-disc",
+    "dashboard": "carers-allowance",
     "recipients": [
       "tax.person@testing.gov.uk"
     ]
