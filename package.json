@@ -21,7 +21,7 @@
     "nodemailer": "1.2.1",
     "nodemailer-ses-transport": "1.1.0",
     "nodemailer-stub-transport": "0.1.4",
-    "performanceplatform-client.js": "0.0.1",
+    "performanceplatform-client.js": "git+https://github.com/alphagov/performanceplatform-client.js.git#release_38",
     "q": "1.0.1",
     "request": "2.40.0",
     "underscore": "1.7.0",
