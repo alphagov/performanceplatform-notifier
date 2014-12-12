@@ -11,6 +11,12 @@ cd performanceplatform-notifier
 npm install
 ```
 
+### Run the app
+
+```
+node ./lib/send-summaries.js
+```
+
 ### Run Tests
 
 
