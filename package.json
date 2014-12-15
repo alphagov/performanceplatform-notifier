@@ -11,7 +11,8 @@
     "summaries": "node lib/send-summaries.js",
     "unit": "./node_modules/mocha/bin/mocha",
     "test": "npm run-script lint && npm run-script unit;",
-    "lint": "[ -z \"$LINTFILES\" ] && LINTFILES=\"lib/ test/\"; ./node_modules/jshint/bin/jshint ${LINTFILES} && ./node_modules/jscs/bin/jscs ${LINTFILES};"
+    "lint": "[ -z \"$LINTFILES\" ] && LINTFILES=\"lib/ test/\"; ./node_modules/jshint/bin/jshint ${LINTFILES} && ./node_modules/jscs/bin/jscs ${LINTFILES};",
+    "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --ui bdd -R spec -t 5000"
   },
   "main": "",
   "author": "Government Digital Service",
@@ -35,6 +36,7 @@
     "mocha": "1.21.4",
     "require-subvert": "0.1.0",
     "sinon": "1.10.3",
-    "sinon-chai": "2.5.0"
+    "sinon-chai": "2.5.0",
+    "istanbul": "0.3.2"
   }
 }
