@@ -1,4 +1,13 @@
-This is a summary email for {{{ dashboard.title }}}.
+
+===============================================
+
+{{{ dashboard.title }}}
+
+Weekly summary
+
+https://www.gov.uk/performance/{{{ dashboard.slug }}}
+
+===============================================
 
 {{ #modules }}
 {{ title }}
