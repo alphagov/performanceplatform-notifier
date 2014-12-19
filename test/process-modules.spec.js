@@ -8,7 +8,7 @@ describe('Process summary modules', function () {
   });
 
   it('returns an array of modules', function () {
-    this.processed.length.should.equal(4);
+    this.processed.length.should.equal(5);
   });
 
   it('should return modules with title property', function () {
@@ -34,4 +34,12 @@ describe('Process summary modules', function () {
     ]);
   });
 
+  it('should return a textUpdate for a user satisfaction module', function () {
+    var module = this.processed[4];
+    module.textUpdate.should.eql([
+      '15 to 22 Dec 2014 = 85.6%',
+      '8 to 14 Dec 2014 = 87.0%',
+      'Total change = -1.4%'
+    ]);
+  });
 });
