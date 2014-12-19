@@ -7,7 +7,7 @@
     ]
   },
   {
-    "dashboard": "carers-allowance",
+    "dashboard": "prison-visits",
     "recipients": [
       "tax.person@testing.gov.uk"
     ]

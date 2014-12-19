@@ -28,8 +28,8 @@ describe('Process summary modules', function () {
   it('should return a textUpdate for a single time series module', function () {
     var module = this.processed[3];
     module.textUpdate.should.eql([
-      '24 to 30 Nov 2014 = 37m 51s',
-      '17 to 23 Nov 2014 = 37m 56s',
+      '24 Nov 2014 to 30 Nov 2014 = 37m 51s',
+      '17 Nov 2014 to 23 Nov 2014 = 37m 56s',
       'Total change = -5s'
     ]);
   });
@@ -37,8 +37,8 @@ describe('Process summary modules', function () {
   it('should return a textUpdate for a user satisfaction module', function () {
     var module = this.processed[4];
     module.textUpdate.should.eql([
-      '15 to 22 Dec 2014 = 85.6%',
-      '8 to 14 Dec 2014 = 87.0%',
+      '15 Dec 2014 to 22 Dec 2014 = 85.6%',
+      '8 Dec 2014 to 14 Dec 2014 = 87.0%',
       'Total change = -1.4%'
     ]);
   });
