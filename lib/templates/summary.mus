@@ -10,7 +10,7 @@ https://www.gov.uk/performance/{{{ dashboard.slug }}}
 ===============================================
 
 {{ #modules }}
-{{ title }}
+{{ moduleConfig.title }}
 -------------------------
 {{ #textUpdate }}
 {{.}}
