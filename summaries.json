@@ -11,5 +11,11 @@
     "recipients": [
       "tax.person@testing.gov.uk"
     ]
+  },
+  {
+    "dashboard": "prison-visits",
+    "recipients": [
+      "next.person@testing.gov.uk"
+    ]
   }
 ]

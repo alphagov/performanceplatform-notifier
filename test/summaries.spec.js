@@ -1,27 +1,24 @@
-var Dashboard = require('performanceplatform-client.js').Dashboard,
-  Email = require('../lib/emailer'),
-  summaries = require('../lib/summaries'),
-  Q = require('q'),
-  _ = require('underscore');
-
 describe('Summary emails', function () {
+  var Dashboard = require('performanceplatform-client.js').Dashboard,
+    Email = require('../lib/emailer'),
+    summaries = require('../lib/summaries'),
+    Q = require('q'),
+    _ = require('underscore'),
+    dashboardConfig = require('../node_modules/performanceplatform-client.js' +
+    '/test/fixtures/dashboard-response.json');
+
+  dashboardConfig.modules = [];
+  dashboardConfig.modules.push(require('../node_modules/performanceplatform-client.js' +
+    '/test/fixtures/module-config-kpi.json'));
+  dashboardConfig.modules.push(require('../node_modules/performanceplatform-client.js' +
+    '/test/fixtures/module-config-grouped-time-series.json'));
 
   var deferred,
     getConfigStub,
     emailerSendSpy;
 
   beforeEach(function (done) {
-    this.dashboardConfig = require('../node_modules/performanceplatform-client.js' +
-      '/test/fixtures/dashboard-response.json');
-    this.dashboardConfig.modules = [];
-    this.dashboardConfig.modules.push(require('../node_modules/performanceplatform-client.js' +
-    '/test/fixtures/module-config-kpi.json'));
-    this.dashboardConfig.modules.push(require('../node_modules/performanceplatform-client.js' +
-    '/test/fixtures/module-config-grouped-time-series.json'));
-    this.dashboardConfig.modules.push(require('../node_modules/performanceplatform-client.js' +
-    '/test/fixtures/module-config-single-time-series.json'));
-    this.dashboardConfig.modules.push(require('../node_modules/performanceplatform-client.js' +
-    '/test/fixtures/module-config-user-satisfaction-graph.json'));
+    this.dashboardConfig = JSON.parse(JSON.stringify(dashboardConfig));
     deferred = Q.defer();
 
     getConfigStub = sinon
@@ -40,10 +37,11 @@ describe('Summary emails', function () {
   afterEach(function () {
     getConfigStub.restore();
     emailerSendSpy.restore();
+    this.dashboardConfig = null;
   });
 
   it('should send one email per recipient', function () {
-    sinon.assert.callCount(emailerSendSpy, 3);
+    sinon.assert.callCount(emailerSendSpy, 4);
   });
 
   it('should be sent to a user with the correct details', function () {
@@ -53,9 +51,9 @@ describe('Summary emails', function () {
   });
 
   it('should list out module updates', function () {
-    this.firstDashboard.text.should.have.string('1 July 2013 to 30 June 2014');
-    this.firstDashboard.text.should.have.string('1 April 2013 to 30 June 2014');
-    this.firstDashboard.text.should.have.string('Total change = −50.00%');
+    this.firstDashboard.text.should.have.string('1 July 2013 to 30 June 2014 = 45.8m');
+    this.firstDashboard.text.should.have.string('1 April 2013 to 31 March 2014 = 46m');
+    this.firstDashboard.text.should.have.string('Total change = −0.27%');
   });
 
 });
