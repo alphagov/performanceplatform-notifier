@@ -17,6 +17,7 @@
   "main": "",
   "author": "Government Digital Service",
   "dependencies": {
+    "crontab": "1.0.2",
     "moment": "2.8.2",
     "mustache": "0.8.2",
     "nodemailer": "1.2.1",
